@@ -1,0 +1,40 @@
+<HTML>
+<BODY>
+<head>
+  <title>Edit A Restaurant</H1></title>
+</head>
+
+
+<header><h1>Edit A Restaurant</h1></header>
+
+<form action='/update' method='post' encType='multipart/form-data'>
+	Restaurant Id: <input type='number' name='restId' value='<%=c.restaurant_id%>' ><br>
+	<p>Name of restaurant: <input type='text' name='restName' required value='<%=c.name%>'></p>
+	Borough: <input type='text' name='borough' value='<%=c.borough%>' ><br>
+	Cuisine: <input type='text' name='cuisine' value='<%=c.cuisine%>' ><br>
+	Photo: <input type='file' name='sampleFile' value=""><br><br>
+	
+	<p>Address:<br>
+	Building: <input type='text' name='building' value='<%=c.address.building%>'><br>
+	Street: <input type='text' name='street' value='<%=c.address.street%>' ><br>
+	Zipcode: <input type='number' name='zipcode' value='<%=c.address.zipcode%>' ><br><br>
+	
+	Coordinates:<br>
+	Longitude: <input type='text' name='lon' value='<%=c.address.coord[0]%>' ><br>
+	Latitude: <input type='text' name='lat' value='<%=c.address.coord[1]%>' ><br>
+	</p>
+	
+	<p>Grades:<br>
+	User:<input type= 'text' name='user' ><br>
+	Score:<input type ='number' name='Score'><br>
+	</p>
+	
+	Owner: <input type='text' name='owner' required><br>
+
+
+	<input name='key' type='hidden' value=<%=c._id%> >
+	<input name='userId' type='hidden' value=<%=c.createdby%> >
+  <input type='submit' value='Edit' />
+</form>
+</BODY>
+</HTML>

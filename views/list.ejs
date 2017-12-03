@@ -1,0 +1,28 @@
+<HTML>
+<head>
+  <title>Read All Restaurant</title>
+</head>
+<body>
+	<h1>Showing Restaurants</h1>
+	<p>User : <%=session.userId %>
+	<p>Showing <%= c.length %> Restaurants
+
+<form action="/search" method ="get">
+		<input type="submit" value="search">
+	</form>
+<ol>
+  <% c.forEach(function(restaurant) { %>
+  <li><a href=/showdetails?id=<%= restaurant._id %>><%= restaurant.name %> </a></li>
+  <% });                        %>
+</ol>
+
+<a href="/createRest">
+    <button>Create New Restaurants</button>
+</a>
+<br>
+<a href="/logout">
+    <button >Logout</button>
+</a>
+
+
+</BODY></HTML>

@@ -1,0 +1,98 @@
+<HTML>
+<BODY>
+<head>
+  <title><%= c.name %></title>
+<!--google map-->
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>	
+<script type="text/javascript">
+        var loadMap = function() 
+        {
+		var myLatLng = {lat: <%= c.address.coord[0]%>, lng: <%= c.address.coord[1]%>};
+                var map = new google.maps.Map(document.getElementById("map"),{
+			      zoom: 18,
+			      center: myLatLng
+		}); 
+		var marker = new google.maps.Marker({
+					position: myLatLng,
+					map: map,
+		});
+        };
+        window.onload= loadMap;
+</script>
+
+
+
+</head>
+
+<h1><%= c.name%></h1>
+
+<p>Restaurant ID: <%= c.restaurant_id %></p>
+
+<!--photo-->
+<% if (c.photo.data != "" ) { %>
+<% if( c.photo.mimetype != 'application/pdf'){%>
+<p>Photo : <br>
+<img src="data:<%=c.photo.mimetype%>;base64,<%=c.photo.data%>" max-height="400px">
+</p>
+<% }} %>
+
+<p>Borough: <%= c.borough %></p>
+<p>Cuisine: <%= c.cuisine %></p>
+
+<p>Address: <ul>
+<li>	 street : <%= c.address.street %></li>
+<li>	 zipcode : <%= c.address.zipcode%></li>
+<li>	 building : <%= c.address.building %></li>
+</ul>
+</p>
+
+
+<!--Map-->
+<p>GPS:
+<%if(c.address.coord[0] != ""){  %>
+[ <%=c.address.coord %> ]
+<aside>
+      	<div id="map" style="width:500px;height:500px;">
+</aside>
+
+<%} else{ %>
+<%="NULL"%>
+<%} %>
+</p>
+
+
+<!--Rate-->
+<p>Rating:  
+<%if(c.grades.score != null){  %>
+
+<ol><% c.grades.forEach(function(rate) { %>
+<%if( rate.userId != ''){  %>
+	<li><%=rate.score%> (<%=rate.userId%>)</li>
+<% }}); %>
+</ol>
+<%} else{ %>
+	No one rate
+<%} %>
+</p>
+
+<!--Created By-->
+<p>Created by:  <%= c.createdby %></p>
+
+
+
+
+<a href="/rate?_id=<%=c._id %>&ampname=<%=c.name%>" >
+    <button>Rate</button>
+</a>
+<a href="/change?_id=<%=c._id%>" >
+  <button>Edit</button>
+</a>
+<a href="/remove?_id=<%=c._id%>" >
+  <button>Delete</button>
+</a>
+<a href="/readAll">
+<button>Back to Home</button>
+</a>
+
+</BODY>
+</HTML>

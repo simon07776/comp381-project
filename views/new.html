@@ -1,0 +1,37 @@
+<HTML>
+<head>
+  <title>Adding New Restaurant</H1></title>
+</head>
+
+<BODY>
+<h1>Adding New Restaurant</h1>
+<form 
+action='/create' 
+method='post' 
+encType='multipart/form-data'>
+	Restaurant Id: <input type='number' name='restId' ><br>
+	Name of restaurant:<input type='text' name='restName' required><br>
+	Borough: <input type='text' name='borough'><br>
+	Cuisine: <input type='text' name='cuisine'><br>
+	Photo: <input type='file' name='sampleFile'><br><br>
+	
+	<p>Address:<br><br>
+	Street: <input type='text' name='street'><br>
+	Building: <input type='text' name='building'><br>
+	Zipcode: <input type='number' name='zipcode'><br><br>
+	
+	Coordinates:<br>
+	Longitude: <input type='text' name='lon' ><br>
+	Latitude: <input type='text' name='lat' ><br>
+	</p>
+	<p>Grades:<br>
+	User:<input type= 'text' name='user'><br>
+	Score:<input type ='number' name='Score'><br>
+	</p>
+	Owner: <input type='text' name='owner' required><br>
+	<br>
+
+  <input type='submit' value='Create' />
+</form>
+</BODY>
+</HTML>
