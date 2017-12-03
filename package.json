@@ -2,7 +2,7 @@
     "name": "server0777",
     "description": "comps381f-project",
     "author": "Yan Man Yuk&Wong Chun Wai",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "dependencies": {
         "mongoose": "*",
         "express": "*",
